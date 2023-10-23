@@ -1,6 +1,8 @@
 using Godot;
 
 public partial class PlaneCb : CharacterBody2D {
+    [Signal] public delegate void PlaneDiedEventHandler();
+    
     private const float Gravity = 1900f;
     private const float Power = -400f;
 
@@ -22,6 +24,7 @@ public partial class PlaneCb : CharacterBody2D {
 
     private void Die() {
         _animatedSprite.Stop();
+        EmitSignal(SignalName.PlaneDied);
         SetPhysicsProcess(false);
     }
 
