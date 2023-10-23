@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd72cg3uymagh"]
+[gd_scene load_steps=5 format=3 uid="uid://cd72cg3uymagh"]
 
 [ext_resource type="Texture2D" uid="uid://bkt7pdxtx11om" path="res://Assets/Background/rocks_2.png" id="1_2tj0m"]
 [ext_resource type="PackedScene" uid="uid://b0gio11xl5hpa" path="res://PlaneCB/PlaneCb.tscn" id="2_s5j46"]
+[ext_resource type="PackedScene" uid="uid://dypsjiw1qyrtl" path="res://Pipes/Pipes.tscn" id="3_hi0gb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tbaq"]
 size = Vector2(522, 20)
@@ -21,3 +22,15 @@ position = Vector2(0, 832)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(251, 0)
 shape = SubResource("RectangleShape2D_6tbaq")
+
+[node name="Pipes" parent="." instance=ExtResource("3_hi0gb")]
+position = Vector2(230, 470)
+
+[node name="Pipes2" parent="." instance=ExtResource("3_hi0gb")]
+position = Vector2(487, 362)
+
+[node name="Pipes3" parent="." instance=ExtResource("3_hi0gb")]
+position = Vector2(723, 465)
+
+[node name="Pipes4" parent="." instance=ExtResource("3_hi0gb")]
+position = Vector2(976, 324)

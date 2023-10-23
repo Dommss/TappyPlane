@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkuh4t0x1523s"]
+
+[ext_resource type="Texture2D" uid="uid://bjf7sfbxh4nt" path="res://Assets/Pipes/laser2.png" id="1_ksdmw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxpvk"]
+size = Vector2(9, 193)
+
+[sub_resource type="Animation" id="Animation_i5ayh"]
+resource_name = "Flash"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h7n4w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oreb0"]
+_data = {
+"Flash": SubResource("Animation_i5ayh"),
+"RESET": SubResource("Animation_h7n4w")
+}
+
+[node name="Laser" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 8)
+texture = ExtResource("1_ksdmw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35, 0)
+shape = SubResource("RectangleShape2D_uxpvk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Flash"
+libraries = {
+"": SubResource("AnimationLibrary_oreb0")
+}
