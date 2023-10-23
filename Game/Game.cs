@@ -28,7 +28,16 @@ public partial class Game : Node2D {
         _pipesHolder.AddChild(newPipes);
     }
 
+    private void StopPipes() {
+        _timer.Stop();
+        var pipeList = _pipesHolder.GetChildren();
+        foreach (var pipe in pipeList) {
+            pipe.SetProcess(false);
+        }
+    }
+
     private void OnGameOver() {
+        StopPipes();
     }
 
     private void OnSpawnTimerTimeout() {
