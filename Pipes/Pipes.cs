@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public partial class Pipes : Node2D {
-    private float _scrollSpeed = 50f;
+    private float _scrollSpeed = 150f;
 
     private VisibleOnScreenNotifier2D _notifier;
 
