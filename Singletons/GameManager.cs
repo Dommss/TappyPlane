@@ -2,6 +2,8 @@ using Godot;
 using System;
 
 public partial class GameManager : Node {
+    [Signal] public delegate void GameOverEventHandler();
+    
     private Resource _gameScene = ResourceLoader.Load("res://Game/Game.tscn");
     private Resource _mainScene = ResourceLoader.Load("res://Main/Main.tscn");
 

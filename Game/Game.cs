@@ -15,7 +15,7 @@ public partial class Game : Node2D {
         _spawnLower = GetNode<Marker2D>("SpawnL");
         _timer = GetNode<Timer>("SpawnTimer");
         _timer.Timeout += OnSpawnTimerTimeout;
-        GetNode<PlaneCb>("PlaneCB").PlaneDied += OnPlaneDied;
+        GetNode<GameManager>("/root/GameManager").GameOver += OnGameOver;
         SpawnPipes();
     }
 
@@ -28,8 +28,7 @@ public partial class Game : Node2D {
         _pipesHolder.AddChild(newPipes);
     }
 
-    private void OnPlaneDied() {
-        GetNode<GameManager>("/root/GameManager").LoadMainScene();
+    private void OnGameOver() {
     }
 
     private void OnSpawnTimerTimeout() {

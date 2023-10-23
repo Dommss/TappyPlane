@@ -2,6 +2,8 @@ using Godot;
 using System;
 
 public partial class GameOver : Control {
+    private GameManager _gameManager;
+    
     private Label _gameOverLabel;
     private Label _pressSpaceLabel;
     private Timer _timer;
@@ -11,28 +13,29 @@ public partial class GameOver : Control {
     public override void _Ready() {
         _gameOverLabel = GetNode<Label>("GameOverLabel");
         _pressSpaceLabel = GetNode<Label>("PressSpaceLabel");
+        _gameManager = GetNode<GameManager>("/root/GameManager");
         _timer = GetNode<Timer>("Timer");
         _timer.Timeout += OnTimerTimeout;
-        OnGameOver();
+        _gameManager.GameOver += OnGameOver;
     }
 
     public override void _Process(double delta) {
         if (_canPressSpace) {
             if (Input.IsActionJustPressed("Fly")) {
-                GetNode<GameManager>("/root/GameManager").LoadMainScene();
+                _gameManager.LoadMainScene();
             }
         }
-    }
-
-    private void OnGameOver() {
-        Show();
-        _timer.Start();
     }
 
     private void RunSequence() {
         _gameOverLabel.Hide();
         _pressSpaceLabel.Show();
         _canPressSpace = true;
+    }
+
+    private void OnGameOver() {
+        Show();
+        _timer.Start();
     }
 
     private void OnTimerTimeout() {
