@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cd72cg3uymagh"]
 
-[ext_resource type="Texture2D" uid="uid://bkt7pdxtx11om" path="res://Assets/Background/rocks_2.png" id="1_2tj0m"]
 [ext_resource type="Script" path="res://Game/Game.cs" id="1_r5xxw"]
 [ext_resource type="PackedScene" uid="uid://b0gio11xl5hpa" path="res://PlaneCB/PlaneCb.tscn" id="2_s5j46"]
 [ext_resource type="PackedScene" uid="uid://dypsjiw1qyrtl" path="res://Pipes/Pipes.tscn" id="3_hi0gb"]
+[ext_resource type="PackedScene" uid="uid://c7v8wxt4eewmc" path="res://ScrollingBG/ScrollingBg.tscn" id="3_w610b"]
 [ext_resource type="PackedScene" uid="uid://3vahuhy0uil7" path="res://HUD/Hud.tscn" id="4_rw5dm"]
 [ext_resource type="PackedScene" uid="uid://cjqbsdaoci65x" path="res://GameOver/GameOver.tscn" id="5_nm3xt"]
 [ext_resource type="AudioStream" uid="uid://btcpecwbeximw" path="res://Assets/Audio/engine.mp3" id="6_ud37w"]
@@ -16,16 +16,14 @@ size = Vector2(522, 20)
 script = ExtResource("1_r5xxw")
 _pipesScene = ExtResource("3_hi0gb")
 
+[node name="ScrollingBG" parent="." instance=ExtResource("3_w610b")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("5_nm3xt")]
 visible = false
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("4_rw5dm")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(252, 330)
-texture = ExtResource("1_2tj0m")
 
 [node name="PlaneCB" parent="." instance=ExtResource("2_s5j46")]
 position = Vector2(60, 532)
