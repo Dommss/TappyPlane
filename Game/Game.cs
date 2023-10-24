@@ -11,12 +11,17 @@ public partial class Game : Node2D {
     private Marker2D _spawnLower;
     private Timer _timer;
 
+    private AudioStreamPlayer _engineSound;
+    private AudioStreamPlayer _gameOverSound;
+
     public override void _Ready() {
         _gameManager = GetNode<GameManager>("/root/GameManager");
         _pipesHolder = GetNode<Node>("PipesHolder");
         _spawnUp = GetNode<Marker2D>("SpawnU");
         _spawnLower = GetNode<Marker2D>("SpawnL");
         _timer = GetNode<Timer>("SpawnTimer");
+        _engineSound = GetNode<AudioStreamPlayer>("EngineSound");
+        _gameOverSound = GetNode<AudioStreamPlayer>("GameOverSound");
         _timer.Timeout += OnSpawnTimerTimeout;
         _gameManager.GameOver += OnGameOver;
         _gameManager.SetScore(0);
@@ -42,6 +47,8 @@ public partial class Game : Node2D {
 
     private void OnGameOver() {
         StopPipes();
+        _engineSound.Stop();
+        _gameOverSound.Play();
     }
 
     private void OnSpawnTimerTimeout() {

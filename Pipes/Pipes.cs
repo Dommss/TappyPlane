@@ -11,12 +11,15 @@ public partial class Pipes : Node2D {
     private Area2D _lowerPipe;
     private VisibleOnScreenNotifier2D _notifier;
 
+    private AudioStreamPlayer _scoreSound;
+
     public override void _Ready() {
         _gameManager = GetNode<GameManager>("/root/GameManager");
         _notifier = GetNode<VisibleOnScreenNotifier2D>("VisibleOnScreenNotifier2D");
         _laser = GetNode<Area2D>("Laser");
         _upperPipe = GetNode<Area2D>("UpperPipe");
         _lowerPipe = GetNode<Area2D>("LowerPipe");
+        _scoreSound = GetNode<AudioStreamPlayer>("ScoreSound");
         _notifier.ScreenExited += OnScreenExited;
         _upperPipe.BodyEntered += OnPipeEntered;
         _lowerPipe.BodyEntered += OnPipeEntered;
@@ -30,6 +33,7 @@ public partial class Pipes : Node2D {
     }
 
     private void PlayerScored() {
+        _scoreSound.Play();
         _gameManager.IncrementScore();
     }
 

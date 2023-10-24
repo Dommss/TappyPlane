@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dypsjiw1qyrtl"]
+[gd_scene load_steps=5 format=3 uid="uid://dypsjiw1qyrtl"]
 
 [ext_resource type="Script" path="res://Pipes/Pipes.cs" id="1_ucy3u"]
 [ext_resource type="PackedScene" uid="uid://bkuh4t0x1523s" path="res://Laser/Laser.tscn" id="1_uv5ux"]
 [ext_resource type="PackedScene" uid="uid://wwy432rnhr83" path="res://Pipe/Pipe.tscn" id="2_41gb1"]
+[ext_resource type="AudioStream" uid="uid://ckcqbjlg57g2b" path="res://Assets/Audio/score.wav" id="4_ca2iw"]
 
 [node name="Pipes" type="Node2D"]
 script = ExtResource("1_ucy3u")
@@ -18,3 +19,6 @@ position = Vector2(2.08165e-12, 80)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(53, 0)
+
+[node name="ScoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ca2iw")
