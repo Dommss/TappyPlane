@@ -28,6 +28,11 @@ public partial class Game : Node2D {
         SpawnPipes();
     }
 
+    public override void _ExitTree() {
+        _timer.Timeout -= OnSpawnTimerTimeout;
+        _gameManager.GameOver -= OnGameOver;
+    }
+
     private void SpawnPipes() {
         var yPos = GD.RandRange(_spawnUp.Position.Y, _spawnLower.Position.Y);
         var newPipes = _pipesScene.Instantiate() as Node2D;

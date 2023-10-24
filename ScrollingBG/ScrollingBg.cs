@@ -17,6 +17,10 @@ public partial class ScrollingBg : ParallaxBackground {
         ScrollOffset = scrollOffset;
     }
 
+    public override void _ExitTree() {
+        _gameManager.GameOver -= OnGameOver;
+    }
+
     private void OnGameOver() {
         SetProcess(false);
     }

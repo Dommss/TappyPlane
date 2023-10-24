@@ -12,6 +12,10 @@ public partial class Hud : Control {
         _gameManager.ScoreUpdated += OnScoreUpdated;
     }
 
+    public override void _ExitTree() {
+        _gameManager.ScoreUpdated -= OnScoreUpdated;
+    }
+
     private void OnScoreUpdated() {
         _scoreLabel.Text = _gameManager.GetScore().ToString();
     }

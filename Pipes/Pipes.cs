@@ -32,6 +32,13 @@ public partial class Pipes : Node2D {
         Position = position;
     }
 
+    public override void _ExitTree() {
+        _notifier.ScreenExited -= OnScreenExited;
+        _upperPipe.BodyEntered -= OnPipeEntered;
+        _lowerPipe.BodyEntered -= OnPipeEntered;
+        _laser.BodyEntered -= OnLaserEntered;
+    }
+
     private void PlayerScored() {
         _scoreSound.Play();
         _gameManager.IncrementScore();

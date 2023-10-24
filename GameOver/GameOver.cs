@@ -27,6 +27,11 @@ public partial class GameOver : Control {
         }
     }
 
+    public override void _ExitTree() {
+        _timer.Timeout -= OnTimerTimeout;
+        _gameManager.GameOver -= OnGameOver;
+    }
+
     private void RunSequence() {
         _gameOverLabel.Hide();
         _pressSpaceLabel.Show();

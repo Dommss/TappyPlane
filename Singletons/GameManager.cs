@@ -32,7 +32,6 @@ public partial class GameManager : Node {
         }
 
         EmitSignal(SignalName.ScoreUpdated);
-        GD.Print("sc: hs:" + Score + " ; " + HighScore);
     }
 
     public void IncrementScore() {
