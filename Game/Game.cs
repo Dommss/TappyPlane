@@ -3,6 +3,8 @@ using System;
 
 public partial class Game : Node2D {
     [Export] private PackedScene _pipesScene;
+
+    private GameManager _gameManager;
     
     private Node _pipesHolder;
     private Marker2D _spawnUp;
@@ -10,12 +12,14 @@ public partial class Game : Node2D {
     private Timer _timer;
 
     public override void _Ready() {
+        _gameManager = GetNode<GameManager>("/root/GameManager");
         _pipesHolder = GetNode<Node>("PipesHolder");
         _spawnUp = GetNode<Marker2D>("SpawnU");
         _spawnLower = GetNode<Marker2D>("SpawnL");
         _timer = GetNode<Timer>("SpawnTimer");
         _timer.Timeout += OnSpawnTimerTimeout;
-        GetNode<GameManager>("/root/GameManager").GameOver += OnGameOver;
+        _gameManager.GameOver += OnGameOver;
+        _gameManager.SetScore(0);
         SpawnPipes();
     }
 
